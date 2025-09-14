@@ -6,15 +6,15 @@ import Home from './Screens/Home/Home';
 import NotFound from './Screens/NotFound/NotFound';
 import Detalle from './Screens/Detalle/Detalle';
 
+
+
 function App() {
   return (
     <div className='App'>
       <Switch>
-
         <Route path='/' component={Home} exact={true} />
         <Route path='/detalle/:id' component={Detalle} exact={true} />
-        <Route path='' component={NotFound} exact={true} />
-
+        <Route component={NotFound} />
       </Switch>
     </div>
   );
