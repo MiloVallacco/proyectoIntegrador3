@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Card from "../Card/Card";
-
-class Peliculas extends Component {
+import { Link } from "react-router-dom";
+class Peliculastop extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -11,7 +11,8 @@ class Peliculas extends Component {
     }
 
     componentDidMount() {
-        fetch('https://api.themoviedb.org/3/movie/popular?api_key=541bfa5aac0dd7cf0e6ec5eaec4a926b')
+        fetch('https://api.themoviedb.org/3/movie/top_rated?api_key=541bfa5aac0dd7cf0e6ec5eaec4a926b')
+        
             .then(res => res.json())
             .then(data => {
                 console.log(data);
@@ -23,15 +24,15 @@ class Peliculas extends Component {
     render() {
         return (
             <React.Fragment>
-                <h1>Todas las peliculas</h1>
+                <h1>Mejor Valoradas</h1> <Link to="/top" >Ver todas →</Link>
                 <section className="cards">
-                    {this.state.loading ? <p>Cargando....</p> : this.state.pelicula.map(unaPelicula => <Card key={unaPelicula.id} data={unaPelicula} />)}
+                    {this.state.loading ? <p>Cargando....</p> : this.state.pelicula.filter((peliculas, i) => i < 8).map(unaPelicula => <Card key={unaPelicula.id} data={unaPelicula} />)}
                 </section>
             </React.Fragment>
         );
     }
 }
 
-export default Peliculas;
+export default Peliculastop;
 
 
