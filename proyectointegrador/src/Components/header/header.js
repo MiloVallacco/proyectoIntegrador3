@@ -15,10 +15,10 @@ function Header() {
               <Link className="nav-link" to="/">Home</Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/movies">Películas</Link>
+              <Link className="nav-link" to="/top">Mejores Valoradas</Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/series">Series</Link>
+              <Link className="nav-link" to="/estrenos">Proximos estrenos</Link>
             </li>
             <li className="nav-item">
               <Link className="nav-link" to="/favorites">Favoritas</Link>
