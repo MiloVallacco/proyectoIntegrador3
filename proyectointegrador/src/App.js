@@ -7,6 +7,8 @@ import NotFound from './Screens/NotFound/NotFound';
 import Detalle from './Screens/Detalle/Detalle';
 import Header from './Components/header/header';
 import Footer from './Components/footer/footer';
+import Estrenos from './Screens/estrenos/estrenos';
+import mejorValoradas from './Screens/mejorValoradas/mejorValoradas';
 
 
 
@@ -17,6 +19,8 @@ function App() {
       <Switch>
         <Route path='/' component={Home} exact={true} />
         <Route path='/detalle/:id' component={Detalle} exact={true} />
+        <Route path='/estrenos' component = {Estrenos} exact={true}/>
+        <Route path='/top' component = {mejorValoradas} exact={true}/>
         <Route component={NotFound} />
       </Switch>
       <Footer/>

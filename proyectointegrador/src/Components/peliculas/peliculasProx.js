@@ -23,7 +23,7 @@ class Peliculas extends Component {
     render() {
         return (
             <React.Fragment>
-                <h1>Proximos Estrenos</h1> <Link to="/estrenos" >Ver todas →</Link>
+                <h1>Proximos Estrenos</h1> <Link to="/estrenos" >Ver todas</Link>
 
                 <section className="cards">
                     {this.state.loading ? <p>Cargando....</p> : this.state.pelicula.filter((peliculas, i) => i < 8).map(unaPelicula => <Card key={unaPelicula.id} data={unaPelicula} />)}
