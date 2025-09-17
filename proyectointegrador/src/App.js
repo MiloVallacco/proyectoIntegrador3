@@ -10,6 +10,7 @@ import Header from './Components/header/header';
 import Footer from './Components/footer/footer';
 import Estrenos from './Screens/estrenos/estrenos';
 import mejorValoradas from './Screens/mejorValoradas/mejorValoradas';
+import Favoritas from './Screens/Favoritas/Favoritas';
 
 
 
@@ -22,7 +23,7 @@ function App() {
         <Route path="/searchResults/:query"  component={Results}/>
         <Route path='/detalle/:id' component={Detalle} exact={true} />
         <Route path='/estrenos' component = {Estrenos} exact={true}/>
-
+        <Route path='/favoritas' component= {Favoritas} exact={true} />
         <Route path='/top' component = {mejorValoradas} exact={true}/>
         <Route component={NotFound} />
       </Switch>

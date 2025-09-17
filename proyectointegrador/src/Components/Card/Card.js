@@ -7,6 +7,7 @@ class Card extends Component {
       super(props);
       this.state = {
         mostrarDescripcion: false,
+        esFavorito: false
       };
       this.activarDescripcion = this.activarDescripcion.bind(this);
     }
@@ -14,6 +15,40 @@ class Card extends Component {
     activarDescripcion() {
       this.setState({ mostrarDescripcion: !this.state.mostrarDescripcion });
     }
+
+    agregarFavoritos(){
+        const id = this.props.data.id
+        let favoritos = []
+
+        let datosEnLocalStorage = localStorage.getItem("LSFavoritos")
+        if (datosEnLocalStorage !== null){
+            favoritos = JSON.parse(datosEnLocalStorage)
+        }
+
+        favoritos.push(id)
+        localStorage.setItem("LSFavoritos", JSON.stringify(favoritos))
+        this.setState({
+            esFavorito: true
+        })
+    }
+
+    eliminarDeFavoritos(){
+        const id = this.props.data.id
+        let favoritos = []
+
+        let datosEnLocalStorage = localStorage.getItem("LSFavoritos")
+        if (datosEnLocalStorage !== null){
+            favoritos = JSON.parse(datosEnLocalStorage)
+        }
+
+      favoritos = favoritos.filter(favId => favId !== id)
+        
+        localStorage.setItem("LSFavoritos", JSON.stringify(favoritos))
+        this.setState({
+            esFavorito: false
+        })
+    }
+
   render() {
     const { data } = this.props;
     const poster = `https://image.tmdb.org/t/p/w342${data.poster_path}`;
@@ -33,7 +68,7 @@ class Card extends Component {
 
             <button 
             className="btn btn-secondary" 
-            onClick={() => this.setState({ mostrarDescripcion: !this.state.mostrarDescripcion })}
+            onClick={this.activarDescripcion}
             >
             {this.state.mostrarDescripcion ? "Ocultar descripción" : "Ver descripción"}
             </button>
@@ -41,7 +76,16 @@ class Card extends Component {
           <Link to={`/detalle/${data.id}`} className="btn btn-primary">
             Ver más
           </Link>
-          <button className="btn alert-primary">🩶</button>
+          
+          {this.state.esFavorito ?
+            <button className="btn alert-primary" onClick={() => this.eliminarDeFavoritos()}>
+             ❤️ Quitar de favoritos
+            </button>
+            :
+            <button className="btn alert-primary" onClick={() => this.agregarFavoritos()}>
+              🤍 Agregar a favoritos
+            </button>
+          }
         </div>
       </article>
     );
