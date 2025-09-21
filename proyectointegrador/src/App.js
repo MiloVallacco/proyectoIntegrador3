@@ -1,6 +1,8 @@
 import './App.css';
 import { Switch, Route } from 'react-router-dom';
 
+
+
 // aca abajo traemos todo lo que hicimo con esos 3 js para que nlo renderize el app
 import Home from './Screens/Home/Home';
 import Results from './Screens/Results/Results';

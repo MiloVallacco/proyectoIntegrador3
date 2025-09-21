@@ -34,12 +34,14 @@ class Favoritas extends Component {
     render (){
         return (
             <React.Fragment>
-                <h2>Películas Favoritas</h2>
-                <section>
-                    {this.state.personajesFavoritos.map((personaje, idx) => 
+                <main className="container">
+                     <h2>Películas Favoritas</h2>
+                     <section className="cards">
+                        {this.state.personajesFavoritos.map((personaje, idx) => 
                         <Card key={idx} data={personaje} />
-                    )}
-                </section>
+                        )}
+                    </section>
+                </main>
             </React.Fragment>
         )
     }
