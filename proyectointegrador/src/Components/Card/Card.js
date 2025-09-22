@@ -9,11 +9,12 @@ class Card extends Component {
         mostrarDescripcion: false,
         esFavorito: false
       };
-      this.activarDescripcion = this.activarDescripcion.bind(this);
     }
   
-    activarDescripcion() {
-      this.setState({ mostrarDescripcion: !this.state.mostrarDescripcion });
+    activarDescripcion = () => {
+      this.setState({
+        mostrarDescripcion: this.state.mostrarDescripcion ? false : true
+      });
     }
 
     agregarFavoritos(){

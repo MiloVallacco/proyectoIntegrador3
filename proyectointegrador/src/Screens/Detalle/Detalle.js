@@ -36,7 +36,7 @@ class Detalle extends Component {
                     <p className="fechaEstreno">Fecha de estreno: {this.state.pelicula.release_date}</p>
                     <p className="duración">Duración: {this.state.pelicula.runtime} </p>
                     <p className="sinopsis">Sinópsis: {this.state.pelicula.overview}</p>
-                    <p className="genero">Género: {this.state.pelicula.genres?.map(genre => genre.name)}</p>
+                    <p className="genero">Género: {this.state.pelicula.genres?.map(genre => genre.name)+`,`}</p>
                 </main>
             </React.Fragment>
         );
