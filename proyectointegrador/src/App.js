@@ -8,10 +8,10 @@ import Home from './Screens/Home/Home';
 import Results from './Screens/Results/Results';
 import NotFound from './Screens/NotFound/NotFound';
 import Detalle from './Screens/Detalle/Detalle';
-import Header from './Components/header/header';
-import Footer from './Components/footer/footer';
-import Estrenos from './Screens/estrenos/estrenos';
-import mejorValoradas from './Screens/mejorValoradas/mejorValoradas';
+import Header from './Components/Header/Header';
+import Footer from './Components/Footer/Footer';
+import Estrenos from './Screens/Estrenos/Estrenos';
+import mejorValoradas from './Screens/MejorValoradas/MejorValoradas';
 import Favoritas from './Screens/Favoritas/Favoritas';
 
 
