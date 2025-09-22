@@ -16,38 +16,70 @@ class Card extends Component {
         mostrarDescripcion: this.state.mostrarDescripcion ? false : true
       });
     }
+    componentDidMount() {
+      this.verificarFavorito();
+    }
 
+    componentDidUpdate(prevProps) {
+      if (prevProps.data.id !== this.props.data.id) {
+        this.verificarFavorito();
+      }
+    }
+
+    verificarFavorito() {
+      const id = this.props.data.id;
+      let datosEnLocalStorage = localStorage.getItem("LSFavoritos");
+      
+      if (datosEnLocalStorage !== null) {
+        let favoritos = JSON.parse(datosEnLocalStorage);
+        let estaEnFavoritos = favoritos.includes(id);
+        
+        this.setState({
+          esFavorito: estaEnFavoritos
+        });
+      }
+    }
+  
     agregarFavoritos(){
-        const id = this.props.data.id
-        let favoritos = []
+        const id = this.props.data.id;
+        let favoritos = [];
 
-        let datosEnLocalStorage = localStorage.getItem("LSFavoritos")
+        let datosEnLocalStorage = localStorage.getItem("LSFavoritos");
         if (datosEnLocalStorage !== null){
-            favoritos = JSON.parse(datosEnLocalStorage)
+            favoritos = JSON.parse(datosEnLocalStorage);
         }
 
-        favoritos.push(id)
-        localStorage.setItem("LSFavoritos", JSON.stringify(favoritos))
-        this.setState({
-            esFavorito: true
-        })
+        if (!favoritos.includes(id)) {
+          favoritos.push(id);
+          localStorage.setItem("LSFavoritos", JSON.stringify(favoritos));
+          this.setState({
+              esFavorito: true
+          });
+
+          if (this.props.onFavoritoChange) {
+            this.props.onFavoritoChange(id, true);
+          }
+        }
     }
 
     eliminarDeFavoritos(){
-        const id = this.props.data.id
-        let favoritos = []
+        const id = this.props.data.id;
+        let favoritos = [];
 
-        let datosEnLocalStorage = localStorage.getItem("LSFavoritos")
+        let datosEnLocalStorage = localStorage.getItem("LSFavoritos");
         if (datosEnLocalStorage !== null){
-            favoritos = JSON.parse(datosEnLocalStorage)
+            favoritos = JSON.parse(datosEnLocalStorage);
         }
 
-      favoritos = favoritos.filter(favId => favId !== id)
-        
-        localStorage.setItem("LSFavoritos", JSON.stringify(favoritos))
+        favoritos = favoritos.filter(favId => favId !== id);
+        localStorage.setItem("LSFavoritos", JSON.stringify(favoritos));
         this.setState({
             esFavorito: false
-        })
+        });
+
+        if (this.props.onFavoritoChange) {
+          this.props.onFavoritoChange(id, false);
+        }
     }
 
   render() {
